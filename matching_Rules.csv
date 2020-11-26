@@ -1,0 +1,88 @@
+merchant_id,service_id,service_name,text_match,text_exclude,matching
+1493,1,Hulu,hulu,,S
+5,1,Hulu,Hulu,,S
+1178,1,Hulu,,Live TV,S
+5,1,Hulu,Renewable Subscription iOS,,S
+3324,1,Hulu,"Disney Bundle: Disney+, Hulu, and ESPN+",,S
+5,1,Hulu,Renewable Subscription Apple TV,,S
+3365,1,Hulu,Hulu,The Roku Channel,S
+3159,1,Hulu,,,S
+3341,1,Hulu,Disney bundle subscription has been canceled,,A
+3324,1,Hulu,Hulu - Fake New current subscriber,,S
+393,3,Netflix,Netflix,,S
+1493,3,Netflix,(Netflix),ALLPlayer,A
+6,3,Netflix,.*(cancel|Netflix| plan ).*,DVD,R
+5,3,Netflix,Basic (Netflix),,S
+5,3,Netflix,Premium (Netflix),,S
+5,3,Netflix,Standard (Netflix),,S
+6,3,Netflix,Netflix - Fake Cancel Passive Churn,,S
+5,3,Netflix,Netflix,,S
+3452,3,Netflix,Netflix,,A
+1493,8,Starz,STARZ,Arabia,S
+5,8,Starz,STARZ,,S
+3230,8,Starz,STARZ,,A
+3258,8,Starz,STARZ,Your,A
+3305,8,Starz,,,S
+3321,8,Starz,,,S
+393,8,Starz,STARZ,The Roku Channel,A
+5,8,Starz,com.starz.starzplay.subscriptions,,S
+5,8,Starz,^YouTube.+Starz,,R
+1898,8,Starz,Starz,,A
+3365,8,Starz,STARZ - Fake Cancel,,S
+3021,8,Starz,STARZ,,S
+3365,8,Starz,STARZ,The Roku Channel,A
+3403,8,Starz,STARZ,,A
+393,8,Starz,STARZ - Fake New,,S
+3321,8,Starz,STARZ - Fake Cancel Passive Churn,,S
+3454,8,Starz,Your.*STARZ,,R
+3453,8,Starz,Your.*Starz,(Orange),R
+3453,8,Starz,Your.*STARZ,,R
+3452,8,Starz,STARZ,,A
+3453,8,Starz,STARZ - Fake New,,S
+3454,8,Starz,STARZ - Fake Cancel,,S
+5,12,Showtime,SHOWTIME,PPV,A
+1898,12,Showtime,Showtime,,A
+5,12,Showtime,YouTube.*Showtime,SHOWTIME,R
+1493,12,Showtime,SHOWTIME,,S
+393,12,Showtime,SHOWTIME - Fake New,,S
+3021,12,Showtime,SHOWTIME,,S
+393,12,Showtime,Showtime,Digital|FandangoNOW|The Roku Channel,A
+3258,12,Showtime,Showtime,Your,A
+3258,12,Showtime,SHOWTIME,Your,A
+5,12,Showtime,Showtime Subscription,YouTube,S
+3298,12,Showtime,,vent,S
+3318,12,Showtime,,,S
+3230,12,Showtime,Cancellation Confirmation SHOWTIME,,S
+3230,12,Showtime,Showtime,,A
+3365,12,Showtime,SHOWTIME - Fake Cancel,,S
+3403,12,Showtime,SHOWTIME,,A
+3021,12,Showtime,SHOW,,A
+3230,12,Showtime,SHOWTIME - Fake Cancel,,S
+393,12,Showtime,SHOWTIME,Digital|FandangoNOW|The Roku Channel,A
+3365,12,Showtime,SHOWTIME,The Roku Channel,A
+5,12,Showtime,CBS All Access and Showtime,,S
+5,12,Showtime,Showtime 1 month free trial,,S
+5,12,Showtime,Showtime 1 week free trial,,A
+5,12,Showtime,Showtime,,S
+3454,12,Showtime,Your.*SHOWTIME,,R
+3453,12,Showtime,Your.*SHOWTIME,,R
+3452,12,Showtime,SHOWTIME,,A
+3453,12,Showtime,SHOWTIME - Fake New,,S
+3454,12,Showtime,SHOWTIME - Fake Cancel,,S
+5,39,CBS All Access,CBS ,Franchise,S
+3258,39,CBS All Access,CBS,Your,A
+1493,39,CBS All Access,CBS,Franchise|Soaps|Beer|Watch!|Brickman,A
+3292,39,CBS All Access,,,S
+3274,39,CBS All Access,,,S
+5,39,CBS All Access,CFS,Candy,S
+393,39,CBS All Access,Lim Commercials 3mo,,S
+3365,39,CBS All Access,CBS - Fake Cancel,,S
+393,39,CBS All Access,CBS All Access,,S
+393,39,CBS All Access,Commercial Free 1 Week,,S
+393,39,CBS All Access,CBS - Fake New,,S
+393,39,CBS All Access,All Access,,A
+3365,39,CBS All Access,CBS All Access,The Roku Channel,S
+3230,39,CBS All Access,CBS - Fake Cancel,,S
+3230,39,CBS All Access,Cancellation Confirmation CBS,,S
+393,39,CBS All Access,CBS - Fake Cancel Passive Churn,,S
+3452,39,CBS All Access,CBS,,A
