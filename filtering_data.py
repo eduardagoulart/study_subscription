@@ -32,9 +32,3 @@ def filter_description(df):
     """
     df = df.loc[df["description"].str.contains("|".join(SERVICES))]
     return df
-
-
-if __name__ == "__main__":
-    df = pd.read_csv("test_Data.csv")
-    df = remove_merchant(df)
-    df = filter_description(df)
