@@ -107,7 +107,7 @@ def main():
         "-merge", "--merge", nargs="+", help="Name of the columns to merge the files on"
     )
     args, unknown_args = parser.parse_known_args()
-    read_files(args)
+    return read_files(args)
 
 
 if __name__ == "__main__":
