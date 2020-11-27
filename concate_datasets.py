@@ -1,5 +1,6 @@
 import argparse
 import pandas as pd
+import uuid
 
 import filtering_data
 
@@ -17,13 +18,17 @@ def read_files(args):
     if len(args.files) > 1:
         for i in range(1, len(args.files)):
             second_df = pd.read_csv(args.files[i])
-            second_df = second_df.drop(["merchant_id"], axis=1)
             if len(args.merge) > 1:
                 df = df.merge(
-                    second_df, left_on=args.merge[i - 1], right_on=args.merge[i]
+                    second_df,
+                    left_on=args.merge[i - 1],
+                    right_on=args.merge[i],
+                    how="outer",
                 )
             else:
-                df = df.merge(second_df, on=args.merge[i])
+                df = df.merge(second_df, on=args.merge[i - 1], how="left")
+    df = df.dropna(subset=["service_name", "description"])
+    df["idx_value"] = [uuid.uuid4() for _ in range(len(df.index))]
     return create_operational_df(df)
 
 
@@ -39,11 +44,15 @@ def create_operational_df(data_df):
 
     def _filtering_services(df):
         df = filtering_data.remove_merchant(df)
-        df = filtering_data.filter_description(df)
+        df = filtering_data.get_matching_description(df)
         return df
 
+    not_final_results = filtering_data.get_remaining_values(data_df)
+    not_final_results = create_final_df(not_final_results)
+
     df = _filtering_services(data_df)
-    return create_final_df(df)
+    df = create_final_df(df)
+    return df, not_final_results
 
 
 def create_final_df(df):
