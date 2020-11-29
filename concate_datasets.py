@@ -48,11 +48,41 @@ def create_operational_df(data_df):
         return df
 
     not_final_results = filtering_data.get_remaining_values(data_df)
-    not_final_results = create_final_df(not_final_results)
+    not_final_results = add_signal_type_info(not_final_results)
 
     df = _filtering_services(data_df)
+    df = add_signal_type_info(df)
     df = create_final_df(df)
+
     return df, not_final_results
+
+
+def add_signal_type_info(df):
+    """
+    We want to add the signa_type information for each
+    transaction
+    Parameter:
+        - df: Pandas Dataframe
+    Return 
+        - Pandas Dataframe
+    """
+    df = df.drop(["idx_value"], axis=1)
+    df["description"] = df["description"].str.lower()
+    cancel = ["cancelled", "cancel"]
+    signup = ["subscription", "signup", "joining", "join", "welcome"]
+    back = ["back", "welcome back", "coming back"]
+    plan_update = ["changed", "update"]
+    trial = ["trial"]
+    df.loc[df["description"].str.contains("|".join(signup)), ["signal_type"]] = "Signup"
+    df.loc[
+        df["description"].str.contains("|".join(back)), ["signal_type"]
+    ] = "Signup back"
+    df.loc[df["description"].str.contains("|".join(trial)), ["signal_type"]] = "Trial"
+    df.loc[df["description"].str.contains("|".join(cancel)), ["signal_type"]] = "Cancel"
+    df.loc[
+        df["description"].str.contains("|".join(plan_update)), ["signal_type"]
+    ] = "Plan Update"
+    return df
 
 
 def create_final_df(df):
@@ -73,21 +103,6 @@ def create_final_df(df):
     Return 
         - Pandas Dataframe
     """
-    df["description"] = df["description"].str.lower()
-    cancel = ["cancelled", "cancel"]
-    signup = ["subscription", "signup", "joining", "join", "welcome"]
-    back = ["back", "welcome back", "coming back"]
-    plan_update = ["changed", "update"]
-    trial = ["trial"]
-    df.loc[df["description"].str.contains("|".join(signup)), ["signal_type"]] = "Signup"
-    df.loc[
-        df["description"].str.contains("|".join(back)), ["signal_type"]
-    ] = "Signup back"
-    df.loc[df["description"].str.contains("|".join(trial)), ["signal_type"]] = "Trial"
-    df.loc[df["description"].str.contains("|".join(cancel)), ["signal_type"]] = "Cancel"
-    df.loc[
-        df["description"].str.contains("|".join(plan_update)), ["signal_type"]
-    ] = "Plan Update"
 
     df = df[
         [
