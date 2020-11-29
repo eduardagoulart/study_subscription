@@ -8,22 +8,24 @@ s3 = session.resource("s3")
 bucket = s3.Bucket("test-bucket-user1")
 
 
-def df_to_csv():
+def df_to_parquet():
     df, not_final_results = main()
     path = "/Users/eduardagoulart/Documents/study/antena/"
     name_matching = "output_df.parquet"
     name_not_final_results = "not_matching_df.parquet"
-    output = path + name_matching
-    df.to_parquet(output)
+    df.to_parquet(path + name_matching)
     not_final_results.to_parquet(path + name_not_final_results)
     return name_matching, name_not_final_results
 
 
 def upload_file_to_s3():
-    file_name, name_not_final_results = df_to_csv()
+    file_name, name_not_final_results = df_to_parquet()
     try:
-        bucket.upload_file(file_name, "parquet-files/{}".format(file_name))
-        bucket.upload_file(file_name, "parquet-files/{}".format(name_not_final_results))
+        bucket.upload_file(file_name, "parquet-files/final_data/{}".format(file_name))
+        bucket.upload_file(
+            name_not_final_results,
+            "parquet-files/not_used_data/{}".format(name_not_final_results),
+        )
     except ClientError as e:
         logging.error(e)
         return False
